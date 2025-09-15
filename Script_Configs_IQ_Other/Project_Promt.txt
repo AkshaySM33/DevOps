@@ -1,0 +1,51 @@
+You are an expert software architect and DevOps engineer.  
+I will give you a software project title and description.  
+
+Based on that, generate the following structured output.  
+If the description is short or lacks details, **intelligently improvise** to create a realistic, professional, and comprehensive project context.
+
+1. **Project Overview**  
+   - Write 5 key points, each in 2 lines, explaining the business and technical overview.  
+   - If description is minimal, expand logically with plausible use cases, technologies, and objectives. 
+   - Include use cases, data processing, integrations, and scalability considerations if input is minimal. 
+
+2. **Modules (Microservices-based)**  
+   - List major modules for the project, designed as independent microservices.  
+   - Each module should have a clear responsibility and interaction scope.  
+   - Add realistic components if the description is insufficient.  
+   - Include realistic microservices for data, authentication, reporting, notifications, analytics, business logics etc.
+
+3. **DevOps & Cloud Infrastructure**  
+   - Describe DevOps practices (CI/CD, monitoring, logging).  
+   - Include AWS services (EKS, RDS, S3, Lambda, CloudWatch, etc.).  
+   - Mention Kubernetes cluster details: 
+   		- Cluster Type: Hybrid setup with AWS EKS for production (managed control plane) and self-managed Kubernetes clusters for lower environments (Dev, QA, UAT, Staging). Use Karpenter for dynamic node provisioning in EKS.
+		- Cluster Size:
+			- Production (EKS): Large cluster with worker nodes (EC2 instances, e.g., t3.xlarge) managed by Karpenter. Specify worker node setup and estimated count (e.g., 30–40 nodes) across multiple availability zones, without mentioning EKS master node count.
+			- Lower Environments (Self-Managed): Large self-managed Kubernetes clusters with 3 master nodes for high availability and 15–20 worker nodes (EC2 instances, e.g., t3.large) across multiple availability zones. Include details for multi-master setup (e.g., etcd configuration) and worker node counts.
+		- Namespaces: Dedicated namespaces for each microservice (e.g., auth, report, data, analytics) to isolate resources and configurations in both EKS and self-managed clusters.
+		- Autoscaling: Production (EKS): Horizontal Pod Autoscaling (HPA) for pods based on CPU/memory metrics; Karpenter for dynamic node-level auto-scaling with custom node pools optimized for workload types (e.g., compute, memory-intensive).
+		- Lower Environments (Self-Managed): HPA for pods; manual scaling for worker nodes due to cost constraints.
+		- Ingress: AWS ALB Ingress Controller for load balancing in both EKS and self-managed clusters, integrated with Route 53 for DNS management and SSL termination using ACM certificates.
+		- Service Discovery: Kubernetes Service resources with CoreDNS for internal service discovery and communication in both cluster types.
+   - Containerization using Docker, deployment with Helm and ArgoCD.
+   - Monitoring and logging using Prometheus, Grafana, CloudWatch, and ELK.  
+   - Deployment strategies: blue-green, canary, environment promotion (Dev → QA → UAT → Staging → Prod), rollback strategy.
+   - Explain CI/CD pipeline tools & flow (Jenkins, GitHub Actions, Docker, JFrog, Trivy, Sonarqube, ArgoCD, Kubernets, Helm, Terraform, Atlantis etc.). 
+   - Backup, disaster recovery, and observability best practices. 
+   - Add realistic assumptions if input is minimal.  
+
+4. **Team Size & Roles**  
+   - Suggest team size between 8–15.  
+   - Break down roles of DevOps Team: DevOps, AWS cloud, Scrum Master/Lead, Manager, Juniour and Senior persons etc.  
+
+5. **Deployment Process**  
+   - Explain environment promotion hierarchy (Dev → QA → UAT → Staging → Production).  
+   - Mention automation tools used (Jenkins, Github Actions, Helm, ArgoCD, Terraform Cloud/Atlantis, Python, BASH script).  
+   - Include rollback strategy, blue-green/canary deployment if relevant.  
+
+Format the answer in a **professional way with headings and bullet points** with professionally written, realistic, suitable for resumes, portfolios, and technical documentation.
+
+Project Title: <Insert Project Title>  
+Project Description: <Insert Project Description>  
+
