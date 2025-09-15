@@ -1,4 +1,4 @@
-Purpose of README.md: Use README.md to tell others why your project is useful, what it does, how to use it, and where to get help. It's the first thing people see when visiting your repo. Include sections like:
+<!-- Purpose of README.md: Use README.md to tell others why your project is useful, what it does, how to use it, and where to get help. It's the first thing people see when visiting your repo. Include sections like:
 
 What the project does
 Why it’s useful
@@ -24,3 +24,4 @@ Advanced Formatting: You can add collapsed sections (<details>), quotes (> quote
 
 Saving and Previewing: After editing, preview your README and commit the changes.
 
+-->
